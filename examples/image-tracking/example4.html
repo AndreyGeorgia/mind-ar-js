@@ -7,7 +7,31 @@
 
 	  <script>
       document.addEventListener("DOMContentLoaded", function() {
+
+
 	const sceneEl = document.querySelector('a-scene');
+  
+
+  
+  const imagetrack = "imageTargetSrc: ./assets/L_204_11_glass.mind;"
+
+  if(imagetrack!="")
+  {
+      sceneEl.setAttribute("mindar-image", imagetrack);
+  }
+
+	const asset = document.querySelector('a-asset-item');
+
+  const assettrack = "./assets/untitled.glb"
+
+
+  if(assettrack!="")
+  {
+      asset.setAttribute("src", assettrack);
+  }
+
+
+
 	const arSystem = sceneEl.systems["mindar-image-system"];
 	const exampleTarget = document.querySelector('#example-target');
 	const exampleTargetLink = document.querySelector('#example-target-link');
@@ -56,34 +80,36 @@
 	loadingOverlay.style.display = "block";
 	controlOverlay.style.display = "block";
 
-	startButton.addEventListener('click', () => {
-	  arSystem.start(); // start AR 
-        });
-	stopButton.addEventListener('click', () => {
-	  arSystem.stop(); // stop
-	});
-	pauseButton.addEventListener('click', () => {
-	  arSystem.pause(true); // pause AR engine, but keep video feed
-	});
-	unpauseButton.addEventListener('click', () => {
-	  arSystem.unpause();
-	});
+//startButton.addEventListener('click', () => {
+//  arSystem.start(); // start AR 
+//      });
+//stopButton.addEventListener('click', () => {
+//  arSystem.stop(); // stop
+//});
+//pauseButton.addEventListener('click', () => {
+//  arSystem.pause(true); // pause AR engine, but keep video feed
+//});
+//unpauseButton.addEventListener('click', () => {
+//  arSystem.unpause();
+//
+//
+//});
+
+
+
       });
     </script>
 
 	  
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: ./assets/L_204_11_glass.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
-	<img id="card" src="./assets/L_204_11_glass.jpg" />
-	<a-asset-item id="avatarModel" src="./assets/untitled.glb"></a-asset-item>
+
+	<a-asset-item id="avatarModel" src=""></a-asset-item>
       </a-assets>
-
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
         <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
           animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
         >
