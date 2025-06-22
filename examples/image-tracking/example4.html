@@ -96,11 +96,23 @@
 	// detect target found
         exampleTarget.addEventListener("targetFound", event => {
           console.log("target found");
+
+        const message = "IMAGE_FOUND"
+        // Send `message` to the parent using the postMessage method on the window.parent reference.
+        window.parent.postMessage(message, "*")
+
+
         });
 
 	// detect target lost
         exampleTarget.addEventListener("targetLost", event => {
           console.log("target lost");
+
+                  const message = "IMAGE_LOST"
+        // Send `message` to the parent using the postMessage method on the window.parent reference.
+        window.parent.postMessage(message, "*")
+
+
         });
 
         exampleTarget.addEventListener("targetUpdate", event => {
