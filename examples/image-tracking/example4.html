@@ -4,6 +4,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+	  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+	const sceneEl = document.querySelector('a-scene');
+	const arSystem = sceneEl.systems["mindar-image-system"];
+	const exampleTarget = document.querySelector('#example-target');
+	const exampleTargetLink = document.querySelector('#example-target-link');
+
+	const compatibilityOverlay = document.querySelector("#example-compatibility-overlay");
+	const loadingOverlay = document.querySelector("#example-loading-overlay");
+	const controlOverlay = document.querySelector("#example-control-overlay");
+
+	const startButton = document.querySelector("#example-start-button");
+	const pauseButton = document.querySelector("#example-pause-button");
+	const unpauseButton = document.querySelector("#example-unpause-button");
+	const stopButton = document.querySelector("#example-stop-button");
+	const stopARButton = document.querySelector("#example-stop-ar-button");
+
+	// arReady event triggered when ready
+        sceneEl.addEventListener("arReady", (event) => {
+	  loadingOverlay.style.display = "none";
+        });
+
+	// arError event triggered when something went wrong. Mostly browser compatbility issue
+        sceneEl.addEventListener("arError", (event) => {
+	  loadingOverlay.style.display = "none";
+	  compatibilityOverlay.style.display = "block";
+        });
+
+	// detect click event on tracking object
+        exampleTargetLink.addEventListener("click", event => {
+          console.log("clicked...");
+        });
+
+	// detect target found
+        exampleTarget.addEventListener("targetFound", event => {
+          console.log("target found");
+        });
+
+	// detect target lost
+        exampleTarget.addEventListener("targetLost", event => {
+          console.log("target lost");
+        });
+
+        exampleTarget.addEventListener("targetUpdate", event => {
+          console.log("target position update");
+        });
+
+
+	loadingOverlay.style.display = "block";
+	controlOverlay.style.display = "block";
+
+	startButton.addEventListener('click', () => {
+	  arSystem.start(); // start AR 
+        });
+	stopButton.addEventListener('click', () => {
+	  arSystem.stop(); // stop
+	});
+	pauseButton.addEventListener('click', () => {
+	  arSystem.pause(true); // pause AR engine, but keep video feed
+	});
+	unpauseButton.addEventListener('click', () => {
+	  arSystem.unpause();
+	});
+      });
+    </script>
+
+	  
   </head>
   <body>
     <a-scene mindar-image="imageTargetSrc: ./assets/L_204_11_glass.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
