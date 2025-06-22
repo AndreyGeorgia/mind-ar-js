@@ -6,14 +6,44 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
 	  <script>
-      document.addEventListener("DOMContentLoaded", function() {
+
+
+
+
+   document.addEventListener("DOMContentLoaded", function() {
+
+
+
+        console.log("set marker")
+        const queryString = window.location.search
+        console.log(queryString)
+        const urlParams = new URLSearchParams(queryString)
+        console.log(urlParams)
+        let objectURL = urlParams.get('marker')
+
+        if(objectURL == null)
+        {
+            objectURL = "L_204_11_glass"
+        }
+
+
+        console.log(objectURL)
+
+
+
+
+
+
+
+
+
 
 
 	const sceneEl = document.querySelector('a-scene');
   
 
   
-  const imagetrack = "imageTargetSrc: ./assets/L_204_11_glass.mind;"
+  const imagetrack = `imageTargetSrc: ./${objectURL}.mind;`
 
   if(imagetrack!="")
   {
@@ -22,7 +52,7 @@
 
 	const asset = document.querySelector('a-asset-item');
 
-  const assettrack = "./assets/untitled.glb"
+  const assettrack = `./assets/${objectURL}.glb`
 
 
   if(assettrack!="")
