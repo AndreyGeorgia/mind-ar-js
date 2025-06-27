@@ -18,17 +18,25 @@
         console.log(queryString)
         const urlParams = new URLSearchParams(queryString)
         console.log(urlParams)
-        let objectURL = urlParams.get('marker')
+        let objectURL = urlParams.get('object')
 
         if(objectURL == null)
         {
-            //objectURL = "L_204_11_glass"
+            objectURL = "L_204_11_glass"
         }
 
 
         console.log(objectURL)
 
+	let markerURL = urlParams.get('marker')
 
+        if(objectURL == null)
+        {
+            markerURL = "L_204_11_glass"
+        }
+
+
+        console.log(markerURL)
 
 
 
@@ -42,7 +50,7 @@
   
 
   
-  const imagetrack = `imageTargetSrc: ./assets/${objectURL}.mind;`
+  const imagetrack = `imageTargetSrc: ${markerURL};`
   console.log( imagetrack)
 
   if(imagetrack!="")
@@ -52,7 +60,7 @@
 
 	const asset = document.querySelector('a-asset-item');
 
-  const assettrack = `./assets/${objectURL}.glb`
+  const assettrack = `${objectURL}`
  
  console.log( assettrack)
   if(assettrack!="")
