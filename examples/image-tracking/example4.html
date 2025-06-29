@@ -68,7 +68,7 @@
       asset.setAttribute("src", assettrack);
   }
 
-
+	const startButton = document.querySelector("#example-debug");
 
 	const arSystem = sceneEl.systems["mindar-image-system"];
 	const exampleTarget = document.querySelector('#example-target');
@@ -95,13 +95,11 @@
 	  compatibilityOverlay.style.display = "block";
         });
 
-	// detect click event on tracking object
-        exampleTargetLink.addEventListener("click", event => {
-          console.log("clicked...");
-        });
 
 	// detect target found
         exampleTarget.addEventListener("targetFound", event => {
+
+		startButton.value = "IMAGE_FOUND";
           console.log("target found");
 
         const message = "IMAGE_FOUND"
@@ -114,7 +112,7 @@
 	// detect target lost
         exampleTarget.addEventListener("targetLost", event => {
           console.log("target lost");
-
+startButton.value = "IMAGE_LOST";
                   const message = "IMAGE_LOST"
         // Send `message` to the parent using the postMessage method on the window.parent reference.
         window.parent.postMessage(message, "*")
@@ -122,13 +120,7 @@
 
         });
 
-        exampleTarget.addEventListener("targetUpdate", event => {
-          console.log("target position update");
-        });
 
-
-	loadingOverlay.style.display = "block";
-	controlOverlay.style.display = "block";
 
 //startButton.addEventListener('click', () => {
 //  arSystem.start(); // start AR 
@@ -153,7 +145,7 @@
 	  
   </head>
   <body>
-	<button type="button">Click Me!</button>  
+	<button id="example-debug" type="button">Click Me!</button>  
     <a-scene mindar-image="" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
 
