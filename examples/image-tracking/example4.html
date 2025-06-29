@@ -70,10 +70,10 @@
 
 	const startButton = document.querySelector("#example-debug");
 	console.log(startButton)
-	   console.log( startButton.value)
-	startButton.value= "Hide Filter";
+	   console.log( startButton.innerHTML)
+	startButton.innerHTML =  "Hide Filter";
 	     
-	     console.log( istartButton.value)
+	     console.log( istartButton.innerHTML)
 
 	const arSystem = sceneEl.systems["mindar-image-system"];
 	const exampleTarget = document.querySelector('#example-target');
@@ -103,7 +103,7 @@
 	// detect target found
         exampleTarget.addEventListener("targetFound", event => {
 
-		startButton.value = "IMAGE_FOUND";
+		startButton.innerHTML = "IMAGE_FOUND";
           console.log("target found");
 
         const message = "IMAGE_FOUND"
@@ -116,7 +116,7 @@
 	// detect target lost
         exampleTarget.addEventListener("targetLost", event => {
           console.log("target lost");
-startButton.value = "IMAGE_LOST";
+startButton.innerHTML = "IMAGE_LOST";
                   const message = "IMAGE_LOST"
         // Send `message` to the parent using the postMessage method on the window.parent reference.
         window.parent.postMessage(message, "*")
