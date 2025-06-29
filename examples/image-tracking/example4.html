@@ -86,6 +86,7 @@
 	// arReady event triggered when ready
         sceneEl.addEventListener("arReady", (event) => {
 	  loadingOverlay.style.display = "none";
+			startButton.value = "IMAGE_READY";
         });
 
 	// arError event triggered when something went wrong. Mostly browser compatbility issue
