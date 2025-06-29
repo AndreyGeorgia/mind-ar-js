@@ -71,12 +71,12 @@
 	const startButton = document.querySelector("#example-debug");
 	console.log(startButton)
 	   console.log( startButton.innerHTML)
-	startButton.innerHTML =  "Hide Filter";
+	startButton.innerHTML =  "AR PREPARE";
 	     
 	     console.log( istartButton.innerHTML)
 
 	const arSystem = sceneEl.systems["mindar-image-system"];
-	const exampleTarget = document.querySelector('#example-target');
+	const exampleTarget = document.querySelector("#example-target");
 	const exampleTargetLink = document.querySelector('#example-target-link');
 
 	const compatibilityOverlay = document.querySelector("#example-compatibility-overlay");
@@ -90,8 +90,7 @@
 
 	// arReady event triggered when ready
         sceneEl.addEventListener("arReady", (event) => {
-	  loadingOverlay.style.display = "none";
-			startButton.value = "IMAGE_READY";
+			startButton.innerHTML = "AR_READY";
         });
 
 	// arError event triggered when something went wrong. Mostly browser compatbility issue
