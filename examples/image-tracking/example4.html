@@ -56,7 +56,7 @@
 
   if(imagetrack!="")
   {
-      sceneEl.setAttribute("mindar-image", imagetrack);
+      sceneEl.setAttribute("mindar-image", imagetrack + "; filterMinCF:0.1; filterBeta: 10");
   }
 
 	const asset = document.querySelector('a-asset-item');
