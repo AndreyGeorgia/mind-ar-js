@@ -49,14 +49,15 @@
 	const sceneEl = document.querySelector('a-scene');
 	    console.log("Scene element");
     console.log(sceneEl)
-
-  
-  const imagetrack = `imageTargetSrc: ${markerURL};`
+	
+  let conf1 = "filterMinCF:0.1"
+  let conf2 = "filterBeta:10"
+  const imagetrack = `imageTargetSrc: ${markerURL};${conf1};${conf2};`
   console.log( imagetrack)
 
   if(imagetrack!="")
   {
-      sceneEl.setAttribute("mindar-image", imagetrack + "; filterMinCF:0.1; filterBeta: 10");
+      sceneEl.setAttribute("mindar-image", imagetrack );
   }
 
 	const asset = document.querySelector('a-asset-item');
